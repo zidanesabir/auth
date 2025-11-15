@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vulnerable Auth Demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-home">
+  <div class="page">
+    <div class="shapes">
+      <div class="shape"></div>
+      <div class="shape"></div>
+      <div class="shape"></div>
+    </div>
+    
+    <header class="header">
+      <h1>⚠️ Vulnerable Auth Demo</h1>
+      <p>For local testing and security education</p>
+      <div class="warning-badge">
+        <span class="warning-icon">!</span>
+        INSECURE • For Educational Purposes Only
+      </div>
+    </header>
+    
+    <div class="card">
+      <h2 style="margin-bottom: 24px; color: #dc2626; font-size: 24px;">Security Vulnerabilities</h2>
+      <div class="vulnerabilities">
+        <div class="vulnerability" style="background: linear-gradient(135deg, #dc2626, #991b1b); border: none;">
+          <div class="vuln-icon">🔓</div>
+          <h3>No Encryption</h3>
+          <p>Plain text passwords stored</p>
+        </div>
+        <div class="vulnerability" style="background: linear-gradient(135deg, #ea580c, #c2410c); border: none;">
+          <div class="vuln-icon">🚫</div>
+          <h3>No JWT</h3>
+          <p>Insecure session management</p>
+        </div>
+        <div class="vulnerability" style="background: linear-gradient(135deg, #ca8a04, #a16207); border: none;">
+          <div class="vuln-icon">⚡</div>
+          <h3>SQL Injection</h3>
+          <p>No input validation</p>
+        </div>
+      </div>
+     
+    </div>
+    
+    <nav class="nav">
+      <a href="register.html">Register</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </div>
+</body>
+</html>

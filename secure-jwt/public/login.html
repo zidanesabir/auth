@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secure Login - JWT Auth</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-login">
+  <div class="page login-page">
+    <div class="shapes">
+      <div class="shape"></div>
+      <div class="shape"></div>
+      <div class="shape"></div>
+    </div>
+    
+    <header class="header">
+      <h1>🔒 Secure Login</h1>
+      <p>Protected by enterprise-grade encryption</p>
+      <div class="security-badge">
+        <span class="security-icon">✓</span>
+        SSL Encrypted • Bcrypt Protected
+      </div>
+    </header>
+    
+    <div class="card card-login">
+      <form id="loginForm" class="form">
+        <div class="form-group">
+          <label>Username</label>
+          <div class="input-wrapper">
+            <input type="text" name="username" required placeholder="Enter your username">
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label>Password</label>
+          <div class="input-wrapper">
+            <input type="password" name="password" required placeholder="Enter your password">
+          </div>
+        </div>
+        
+        <button type="submit" class="btn btn-secure">Secure Login</button>
+      </form>
+    </div>
+    
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="register.html">Register</a>
+    </nav>
+  </div>
+
+  <script>
+    const form = document.getElementById('loginForm');
+    
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(form));
+      
+      try {
+        const res = await fetch('/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        
+        const json = await res.json();
+        
+        if (json.token) {
+          // Store token in memory (NOT localStorage per requirements)
+          sessionStorage.setItem('token', json.token);
+          sessionStorage.setItem('username', data.username);
+          window.location.href = 'welcome.html';
+        } else {
+          alert('❌ Invalid username or password!');
+        }
+      } catch (error) {
+        alert('❌ Error: ' + error.message);
+      }
+    });
+  </script>
+</body>
+</html>

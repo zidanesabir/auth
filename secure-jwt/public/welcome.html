@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome - JWT Auth</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-welcome">
+  <div class="page">
+    <div class="shapes">
+      <div class="shape"></div>
+      <div class="shape"></div>
+      <div class="shape"></div>
+    </div>
+    
+    <div class="welcome-content">
+      <h2>🎉 Welcome Back!</h2>
+      <div class="user-info">
+        <p style="font-size: 18px; font-weight: 600;">You're successfully logged in</p>
+        <p style="margin-top: 8px; opacity: 0.9;" id="userDisplay"></p>
+        <p style="margin-top: 12px; font-size: 14px; opacity: 0.8;">Token Status: <span id="tokenStatus" style="color: #10b981; font-weight: 600;">✓ Valid</span></p>
+      </div>
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+    
+    <nav class="nav">
+      <a href="index.html">Home</a>
+    </nav>
+  </div>
+
+  <script>
+    // Check authentication on page load
+    window.addEventListener('load', () => {
+      const token = sessionStorage.getItem('token');
+      const username = sessionStorage.getItem('username');
+      
+      if (!token || !username) {
+        alert('⚠️ Please login first!');
+        window.location.href = 'login.html';
+        return;
+      }
+      
+      // Display user info
+      document.getElementById('userDisplay').textContent = `Logged in as: ${username}`;
+      
+      // Verify token (you can add backend verification here)
+      try {
+        const tokenData = JSON.parse(atob(token));
+        if (tokenData.exp && tokenData.exp < Date.now()) {
+          document.getElementById('tokenStatus').innerHTML = '⚠️ Expired';
+          document.getElementById('tokenStatus').style.color = '#ef4444';
+        }
+      } catch (e) {
+        console.error('Token validation error:', e);
+      }
+    });
+    
+    function logout() {
+      sessionStorage.removeItem('token');
+      sessionStorage.removeItem('username');
+      alert('✅ Logged out successfully!');
+      window.location.href = 'index.html';
+    }
+  </script>
+</body>
+</html>

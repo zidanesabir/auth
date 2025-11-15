@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome - Vulnerable Auth</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-welcome">
+  <div class="page">
+    <div class="shapes">
+      <div class="shape"></div>
+      <div class="shape"></div>
+      <div class="shape"></div>
+    </div>
+    
+    <div class="welcome-content">
+      <h2>⚠️ Welcome to Vulnerable Auth</h2>
+      <div class="warning-info">
+        <p style="font-size: 18px; font-weight: 600; color: #fecaca; margin-bottom: 12px;">
+          Educational Demo Environment
+        </p>
+        <p style="opacity: 0.9; margin-bottom: 16px;">
+          This project demonstrates common security vulnerabilities in authentication systems.
+        </p>
+        
+        <div style="background: rgba(254, 202, 202, 0.3); padding: 16px; border-radius: 12px; margin-top: 16px; border: 2px dashed #ef4444;">
+          <p style="color: #7f1d1d; font-weight: 600; margin-bottom: 12px; font-size: 15px;">
+            🚨 Security Issues Present:
+          </p>
+          <ul style="color: #991b1b; text-align: left; margin-left: 20px; line-height: 1.8; font-size: 14px;">
+            <li><strong>Plain Text Passwords:</strong> No bcrypt or hashing</li>
+            <li><strong>No JWT Tokens:</strong> Insecure session management</li>
+            <li><strong>SQL Injection:</strong> Unvalidated user inputs</li>
+            <li><strong>No HTTPS:</strong> Data transmitted insecurely</li>
+            <li><strong>Missing CSRF Protection:</strong> Vulnerable to attacks</li>
+            <li><strong>No Rate Limiting:</strong> Brute force attacks possible</li>
+          </ul>
+        </div>
+        
+        <div style="margin-top: 20px; padding: 12px; background: rgba(34, 197, 94, 0.2); border-radius: 8px; border: 2px solid rgba(34, 197, 94, 0.4);">
+          <p style="color: #bbf7d0; font-size: 14px; font-weight: 600;">
+            ✅ Learn how to FIX these issues with JWT, bcrypt, and proper security practices!
+          </p>
+        </div>
+      </div>
+      
+      <a href="index.html" class="home-btn">Back to Home</a>
+    </div>
+    
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+    </nav>
+  </div>
+</body>
+</html>

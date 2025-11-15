@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - Secure JWT Auth</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-register">
+  <div class="page">
+    <div class="shapes">
+      <div class="shape"></div>
+      <div class="shape"></div>
+      <div class="shape"></div>
+    </div>
+    
+    <header class="header">
+      <h1>Create Account</h1>
+      <p>Join our secure platform</p>
+    </header>
+    
+    <div class="card">
+      <form id="regForm" class="form">
+        <div class="form-group">
+          <label>Username</label>
+          <div class="input-wrapper">
+            <input type="text" name="username" required placeholder="Enter your username">
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label>Password</label>
+          <div class="input-wrapper">
+            <input type="password" name="password" required placeholder="Enter your password">
+          </div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Create Account</button>
+      </form>
+    </div>
+    
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </div>
+
+  <script>
+    const form = document.getElementById('regForm');
+    
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(form));
+      
+      try {
+        const res = await fetch('/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        
+        const json = await res.json();
+        
+        if (json.ok) {
+          alert('✅ Registration successful! Please login.');
+          window.location.href = 'login.html';
+        } else {
+          alert('❌ Registration failed: ' + (json.message || 'Unknown error'));
+        }
+      } catch (error) {
+        alert('❌ Error: ' + error.message);
+      }
+    });
+  </script>
+</body>
+</html>
