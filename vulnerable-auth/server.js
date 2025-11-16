@@ -44,7 +44,7 @@ app.post("/login", (req, res) => {
       return;
     }
     if (results && results.length > 0) {
-      res.redirect("/welcome.html");
+      res.send("Logged in");
       return;
     }
     res.status(401).send("Invalid");

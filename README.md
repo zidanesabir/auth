@@ -77,3 +77,6 @@ This app is intentionally unsafe. Demonstrate login bypass to understand the ris
 ## Notes
 - The secure app uses parameterized queries, password hashing, JWT, `helmet`, `cors`, and rate limiting.
 - The vulnerable app stores plaintext passwords and builds SQL with user-controlled strings. Do not deploy it.
+
+
+sessionStorage.getItem('token')
